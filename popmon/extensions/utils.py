@@ -32,7 +32,7 @@ def get_extras():
     return extras
 
 
-def write_extras():
+def write_extras() -> None:
     """Write extras to extras.json for setup.py"""
     extras = get_extras()
     file_path = Path(__file__).parent.parent.parent / "extras.json"

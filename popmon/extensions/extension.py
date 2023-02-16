@@ -22,7 +22,7 @@ import importlib.util
 from typing import Callable, List
 
 
-def is_installed(package):
+def is_installed(package) -> bool:
     is_present = importlib.util.find_spec(package)
     return is_present is not None
 
@@ -36,7 +36,7 @@ class Extension:
     def extras(self):
         return {self.name: self.requirements}
 
-    def check(self):
+    def check(self) -> None:
         if all(is_installed(package) for package in self.requirements):
             func = self.extension
             func = func.__func__

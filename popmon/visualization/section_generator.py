@@ -53,7 +53,7 @@ group_descriptions = {
 }
 
 
-def get_stat_description(name: str):
+def get_stat_description(name: str) -> str:
     """Gets the description of a statistic.
 
     :param str name: the name of the statistic.
@@ -69,8 +69,8 @@ def get_stat_description(name: str):
     if name in "mean_trend10_zscore":
         return "Significance of (rolling) trend in means of features"
 
-    head, *tail = name.split("_")
-    tail = "_".join(tail)
+    head, *tails = name.split("_")
+    tail = "_".join(tails)
 
     if tail in comparisons and head in references:
         return comparisons[tail]
@@ -97,11 +97,11 @@ class SectionGenerator(Module):
         ignore_features=None,
         static_bounds=None,
         dynamic_bounds=None,
-        prefix="traffic_light_",
+        prefix: str = "traffic_light_",
         suffices=None,
         ignore_stat_endswith=None,
-        description="",
-    ):
+        description: str = "",
+    ) -> None:
         """Initialize an instance of SectionGenerator.
 
         :param str read_key: key of input data to read from the datastore and use for plotting
@@ -203,7 +203,7 @@ class SectionGenerator(Module):
             # filter out potential empty plots (from skip empty plots)
             plots = [e for e in plots if len(e["plot"])]
 
-            layouts = ""
+            # layouts = ""
             if len(plots) > 0:
                 layouts = plots[0]["layout"]
                 if "shapes" in layouts:

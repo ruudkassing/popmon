@@ -38,7 +38,7 @@ class FileWriter(Module):
         file_path: Optional[Union[str, Path]] = None,
         apply_func: Optional[Callable] = None,
         **kwargs,
-    ):
+    ) -> None:
         """Initialize an instance.
 
         :param str read_key: key of input histogram-dict to read from data store

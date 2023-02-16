@@ -36,7 +36,7 @@ class FileReader(Module):
         file_path: Union[str, Path],
         apply_func: Optional[Callable] = None,
         **kwargs,
-    ):
+    ) -> None:
         """Initialize an instance.
 
         :param str store_key: key of input data to be stored in the datastore
